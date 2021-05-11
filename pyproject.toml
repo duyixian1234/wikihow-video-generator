@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "wikihow-videos"
+version = "0.1.0"
+description = ""
+authors = ["duyixian <duyixian1234@qq.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+tencentcloud-sdk-python = "^3.0.391"
+jupyterlab = "^3.0.15"
+cos-python-sdk-v5 = "^1.9.4"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^21.5b1", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
