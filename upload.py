@@ -1,7 +1,5 @@
-from qcloud_cos import CosConfig
-from qcloud_cos import CosS3Client
-from qcloud_cos import CosServiceError
-from qcloud_cos import CosClientError
+from qcloud_cos import CosClientError, CosConfig, CosS3Client, CosServiceError
+
 from credential import createCredential
 
 
