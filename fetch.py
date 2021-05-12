@@ -28,11 +28,7 @@ def make_article(url: str) -> Article:
 
 
 def make_intro(intro):
-    ret = ""
-    for child in intro:
-        if child.name != "sup":
-            ret += child.text if child.name else child
-    return ret
+    return intro.text
 
 
 def make_approach(step):
@@ -48,8 +44,7 @@ def make_step(section):
     step = Step(pic=img, text="")
     for sub_step in section.select(".step"):
         for child in sub_step.children:
-            if child.name != "sup":
-                content = child.text if child.name else child
-                if content:
-                    step.text += content
+            content = child.text if child.name else child
+            if content:
+                step.text += content
     return step
