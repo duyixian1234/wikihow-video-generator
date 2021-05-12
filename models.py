@@ -8,7 +8,7 @@ class Step:
 
 
 @dataclass
-class Method:
+class Approach:
     name: str
     steps: list[Step] = field(default_factory=list)
 
@@ -19,4 +19,4 @@ class Article:
     title: str
     origin: str
     intro: str
-    methods: list[Method] = field(default_factory=list)
+    approaches: list[Approach] = field(default_factory=list)
