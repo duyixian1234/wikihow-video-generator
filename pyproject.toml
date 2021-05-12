@@ -9,6 +9,7 @@ python = "^3.9"
 tencentcloud-sdk-python = "^3.0.391"
 jupyterlab = "^3.0.15"
 cos-python-sdk-v5 = "^1.9.4"
+playwright = "^1.11.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.5b1", allow-prereleases = true}
