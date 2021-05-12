@@ -1,20 +1,16 @@
+import base64
 import json
+import traceback
+
+from tencentcloud.aai.v20180522 import aai_client, models
 from tencentcloud.common import credential
-from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import (
     TencentCloudSDKException,
 )
-from tencentcloud.aai.v20180522 import aai_client, models
-import os
-import traceback
-import base64
+from tencentcloud.common.profile.client_profile import ClientProfile
+from tencentcloud.common.profile.http_profile import HttpProfile
 
-
-def createCredential() -> credential.Credential:
-    secret_id = os.getenv("TC_SECRETID")
-    secret_key = os.getenv("TC_SECRETKEY")
-    return credential.Credential(secret_id, secret_key)
+from credential import createCredential
 
 
 def transform(text: str, cred: credential.Credential = createCredential()) -> bytes:
