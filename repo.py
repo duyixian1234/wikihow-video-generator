@@ -11,5 +11,5 @@ client = AsyncIOMotorClient(
 db = client.get_default_database()
 
 
-async def saveArticle(article: Article) -> None:
+async def save_article(article: Article) -> None:
     await db.articles.insert_one(asdict(article))
