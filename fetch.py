@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from bs4.element import Tag
 
 from models import Approach, Article, Step
+from urllib.parse import unquote
 
 
 def get_html(url: str) -> str:
@@ -30,7 +31,7 @@ def make_article(url: str) -> Article:
     assert main
     intro = make_intro(main.select_one("#intro").select_one("#mf-section-0"))
     article = Article(
-        title=html.title.text, _id=html.title.text, origin=url, intro=intro
+        title=html.title.text, _id=html.title.text, origin=unquote(url), intro=intro
     )
     approaches = [make_approach(step) for step in main.select(".steps")]
     article.approaches = approaches
