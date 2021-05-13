@@ -1,22 +1,19 @@
-from dataclasses import dataclass, field
+from pydantic import BaseModel, Field
 
 
-@dataclass
-class Step:
+class Step(BaseModel):
     pic: str
     sub_steps: list[str]
 
 
-@dataclass
-class Approach:
+class Approach(BaseModel):
     name: str
-    steps: list[Step] = field(default_factory=list)
+    steps: list[Step] = Field(default_factory=list)
 
 
-@dataclass
-class Article:
-    _id: str
+class Article(BaseModel):
+    id: str = Field(alias="_id")
     title: str
     origin: str
     intro: str
-    approaches: list[Approach] = field(default_factory=list)
+    approaches: list[Approach] = Field(default_factory=list)
