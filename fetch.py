@@ -41,10 +41,9 @@ def make_approach(step):
 
 def make_step(section):
     img = section.select_one("img").get("data-srclarge")
-    step = Step(pic=img, text="")
-    for sub_step in section.select(".step"):
-        for child in sub_step.children:
-            content = child.text if child.name else child
-            if content:
-                step.text += content
-    return step
+    sub_steps = [make_sub_step(sub_step) for sub_step in section.select(".step")]
+    return Step(pic=img, sub_steps=sub_steps)
+
+
+def make_sub_step(sub_step):
+    return "".join(child.text if child.name else child for child in sub_step.children)

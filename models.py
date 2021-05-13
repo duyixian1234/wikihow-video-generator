@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class Step:
     pic: str
-    text: str
+    sub_steps: list[str]
 
 
 @dataclass
