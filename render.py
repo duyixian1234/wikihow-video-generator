@@ -1,5 +1,6 @@
-from models import Approach, Article, Step
+from typing import List
 
+from models import Approach, Article, Step
 
 MARP = """---
 marp: true
@@ -11,7 +12,7 @@ paginate: true
 class Render:
     def __init__(self, article: Article):
         self.article = article
-        self.md = []
+        self.md: List[str] = []
         self.add_marp().add_title().add_intro().add_approaches()
 
     def add_marp(self) -> "Render":
@@ -44,6 +45,7 @@ class Render:
         self.add_split()
         for step in approach.steps:
             self.add_step(step)
+        return self
 
     def add_step(self, step: Step) -> "Render":
         if step.pic:

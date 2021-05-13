@@ -1,11 +1,11 @@
 from typing import Optional
+from urllib.parse import unquote
 
 import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
 from models import Approach, Article, Step
-from urllib.parse import unquote
 
 
 def get_html(url: str) -> str:
