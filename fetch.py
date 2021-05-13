@@ -16,6 +16,7 @@ def parse(content: str) -> BeautifulSoup:
 def make_article(url: str) -> Article:
     raw = getHtml(url)
     html = parse(raw)
+    html.sup.decompose()
     main = html.select_one(".mw-parser-output")
     intro = make_intro(main.select_one("#intro").select_one("#mf-section-0"))
     article = Article(
