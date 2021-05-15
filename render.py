@@ -13,7 +13,15 @@ class Render:
     def __init__(self, article: Article):
         self.article = article
         self.md: List[str] = []
-        self.add_marp().add_title().add_intro().add_approaches()
+        (
+            self.add_marp()
+            .add_title()
+            .add_intro()
+            .add_approaches()
+            .add_tips()
+            .add_warnings()
+            .add_ending()
+        )
 
     def add_marp(self) -> "Render":
         self.md.append(MARP)
@@ -54,6 +62,26 @@ class Render:
         for sub_step in step.sub_steps:
             self.md.append(sub_step)
             self.add_split()
+        return self
+
+    def add_tips(self) -> "Render":
+        if not self.article.tips:
+            return self
+        self.md.append("## 小提示")
+        self.md.extend(self.article.tips)
+        self.add_split()
+        return self
+
+    def add_warnings(self) -> "Render":
+        if not self.article.warnings:
+            return self
+        self.md.append("## 警告")
+        self.md.extend(self.article.warnings)
+        self.add_split()
+        return self
+
+    def add_ending(self) -> "Render":
+        self.md.append("## 感谢观看")
         return self
 
     def __str__(self):

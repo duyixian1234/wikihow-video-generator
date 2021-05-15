@@ -35,6 +35,8 @@ def make_article(url: str) -> Article:
     )
     approaches = [make_approach(step) for step in main.select(".steps")]
     article.approaches = approaches
+    article.tips = make_tips(main)
+    article.warnings = make_warnings(main)
     return article
 
 
@@ -58,3 +60,15 @@ def make_step(section: Tag) -> Step:
 
 def make_sub_step(sub_step: Tag) -> str:
     return "".join(child.text if child.name else child for child in sub_step.children)
+
+
+def make_tips(main: Tag) -> list[str]:
+    if not (tips := main.select_one(".小提示")):
+        return []
+    return [tip.text for tip in tips.select("li")]
+
+
+def make_warnings(main: Tag) -> list[str]:
+    if not (warnings := main.select_one(".警告")):
+        return []
+    return [warning.text for warning in warnings.select("li")]
